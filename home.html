@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TecnoMagia — Home</title>
+  <meta name="description" content="Tela inicial do ebook. Clique na capa para ir ao sumário." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div id="progress"><div class="bar"></div></div>
+  <main class="container home-wrap">
+    <section class="card home-card">
+      <header class="header">
+        <p class="chapter">Ebook — Fantasia Científica</p>
+        <h1 class="title" style="text-align:center">TecnoMagia: Crônicas de Nano-Arcanum</h1>
+        <div class="subtitle" style="justify-content:center">
+          <span class="badge"><span class="dot"></span> Autor: Pedro Schuves Marodin</span>
+        </div>
+      </header>
+
+      <div class="home-hero">
+        <a class="cover-link" href="./index.html" title="Ir ao Sumário" data-nav>
+          <img class="cover-img" src="./assets/images/capa.png" alt="Capa — TecnoMagia: Crônicas de Nano-Arcanum" />
+          <span class="cover-cta">Clique para ir ao Sumário</span>
+        </a>
+      </div>
+
+      <nav class="nav" style="margin-top:18px">
+        <span></span>
+        <a class="btn toc" data-nav href="./index.html">Ir ao Sumário</a>
+        <a class="btn next" data-nav href="./pages/page-1.html">Começar leitura →</a>
+      </nav>
+      <div class="footer-note" style="text-align:center">Dica: você pode clicar na capa para entrar. Use ← → para navegar.</div>
+    </section>
+  </main>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

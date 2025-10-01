@@ -1,0 +1,290 @@
+/* TecnoMagia eBook — Design premium com animações sutis e glassmorphism */
+/* Autor do conteúdo: Pedro Schuves Marodin (exibido nas páginas) */
+
+/* Reset e bases */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+  color: #e9e9f1;
+  background: radial-gradient(1200px 800px at 10% 10%, rgba(255, 0, 153, 0.08), transparent 60%),
+              radial-gradient(1200px 800px at 90% 20%, rgba(0, 136, 255, 0.08), transparent 60%),
+              linear-gradient(120deg, #0b0b13 0%, #0e0e1a 45%, #0a0a12 100%);
+  min-height: 100%;
+  line-height: 1.7;
+  overflow-x: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+:root {
+  --accent: #6ee7ff;
+  --accent-2: #b388ff;
+  --glow: rgba(110, 231, 255, 0.55);
+  --card-bg: rgba(17, 18, 34, 0.62);
+  --card-bd: rgba(120, 140, 255, 0.25);
+  --muted: #bfc4d6;
+  --muted-2: #8c92a7;
+  --good: #65ffa3;
+  --warn: #ffd36e;
+}
+
+/* Overlay de grade sutil futurista */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(transparent 95%, rgba(110,231,255,.05) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(179,136,255,.05) 96%);
+  background-size: 28px 28px, 28px 28px;
+  mask-image: radial-gradient(circle at 50% 30%, black 40%, transparent 75%);
+}
+
+/* Animações de entrada/saída */
+body.enter {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .50s ease, transform .50s ease;
+}
+body.fade {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.container {
+  width: min(980px, calc(100% - 32px));
+  margin: clamp(18px, 4vh, 32px) auto 90px;
+}
+
+.card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-bd);
+  border-radius: 20px;
+  padding: clamp(18px, 3.2vw, 28px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,0.03) inset;
+  backdrop-filter: blur(10px) saturate(120%);
+}
+
+.card::before {
+  /* borda com gradiente sutil */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(120deg, rgba(110,231,255,.45), rgba(179,136,255,.35), rgba(110,231,255,.25));
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.header {
+  display: grid;
+  gap: 10px;
+}
+.title {
+  font-family: 'Cinzel', 'Crimson Pro', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: .6px;
+  font-size: clamp(28px, 4.2vw, 44px);
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px rgba(110, 231, 255, 0.08);
+}
+.subtitle {
+  color: var(--muted);
+  font-size: clamp(14px, 1.9vw, 16px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  color: #e6f9ff;
+}
+.badge .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.meta {
+  display: flex; gap: 12px; align-items: center; color: var(--muted-2);
+}
+.meta span { opacity: .9; }
+.meta .sep { opacity: .4; }
+
+.chapter {
+  margin-top: 8px;
+  color: #d9d2ff;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.content { margin-top: 16px; }
+.content p { margin: 0 0 14px; font-size: clamp(16px, 2.15vw, 18px); color: #ebecf6; }
+.content p.muted { color: var(--muted); }
+
+hr.soft {
+  border: none; height: 1px; margin: 18px 0; 
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.btn {
+  --b: rgba(255,255,255,0.14);
+  --bg: rgba(255,255,255,0.03);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: #eaf7ff;
+  text-decoration: none;
+  border: 1px solid var(--b);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)), var(--bg);
+  position: relative;
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.btn:hover { 
+  transform: translateY(-1px);
+  border-color: rgba(110,231,255,.45);
+  box-shadow: 0 6px 18px rgba(110,231,255,.18), 0 0 0 1px rgba(110,231,255,.25) inset;
+}
+.btn:active { transform: translateY(0); }
+.btn.secondary { --bg: rgba(179,136,255,0.06); }
+.btn.ghost { background: transparent; }
+
+.toc {
+  justify-self: center;
+}
+.prev { justify-self: start; }
+.next { justify-self: end; }
+
+.page-num {
+  position: absolute;
+  top: -12px; right: -12px;
+  background: radial-gradient(60% 60% at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.05));
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #091018;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 8px 24px rgba(110, 231, 255, 0.35);
+  background-color: var(--accent);
+}
+
+.footer-note { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+/* Barra de progresso */
+#progress {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 6px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 50;
+}
+#progress .bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #6ee7ff, #b388ff, #6ee7ff);
+  background-size: 200% 100%;
+  animation: slide 5s linear infinite;
+  box-shadow: 0 0 18px rgba(110,231,255,.35);
+}
+@keyframes slide { to { background-position: 200% 0; } }
+
+/* Sumário */
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+.toc-item {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.toc-item:hover { 
+  transform: translateY(-2px); 
+  border-color: rgba(110,231,255,.45);
+  box-shadow: 0 10px 24px rgba(110,231,255,.18);
+}
+.toc-item h3 { margin: 0 0 4px; font-size: 16px; }
+.toc-item p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/******** Home ********/
+.home-wrap { margin-top: clamp(24px, 6vh, 48px); }
+.home-card { overflow: hidden; }
+.home-hero { display: grid; place-items: center; margin-top: 10px; }
+.cover-link { position: relative; display: inline-block; text-decoration: none; }
+.cover-img {
+  width: min(720px, 92vw);
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 20px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.04) inset;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
+}
+.cover-link:hover .cover-img {
+  transform: translateY(-2px) scale(1.01);
+  border-color: rgba(110,231,255,.45);
+  box-shadow: 0 28px 80px rgba(110,231,255,.20);
+  filter: saturate(105%);
+}
+.cover-cta {
+  position: absolute;
+  left: 50%; bottom: 14px; transform: translateX(-50%);
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+  color: #eaf7ff;
+  font-size: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  backdrop-filter: blur(8px) saturate(120%);
+}
+@media (max-width: 520px) {
+  .cover-cta { font-size: 13px; padding: 8px 12px; bottom: 10px; }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .nav { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
+  .toc { grid-column: 1 / -1; }
+}
