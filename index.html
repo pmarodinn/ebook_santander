@@ -3,56 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TecnoMagia: Crônicas de Nano-Arcanum — Sumário</title>
-  <meta name="description" content="Ebook interativo: tecnologia, RPG, magia e nanotecnologia. Autor: Pedro Schuves Marodin." />
+  <title>Redirecionando…</title>
+  <meta http-equiv="refresh" content="0; url=./home.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <script>
+    window.location.replace('./home.html');
+  </script>
 </head>
 <body>
-  <div id="progress"><div class="bar"></div></div>
   <main class="container">
     <section class="card">
-      <div class="page-num">Sumário</div>
       <header class="header">
-        <p class="chapter">Ebook — Fantasia Científica</p>
-        <h1 class="title">TecnoMagia: Crônicas de Nano-Arcanum</h1>
-        <div class="subtitle">
-          <span class="badge"><span class="dot"></span> Tecnologia • RPG • Magia • Nanotecnologia</span>
-          <span class="meta"><span>Autor: Pedro Schuves Marodin</span><span class="sep">•</span><span>30 páginas</span><span class="sep">•</span><span>Capítulos curtos</span></span>
-        </div>
+        <h1 class="title">Redirecionando para a Capa…</h1>
+        <div class="subtitle"><span class="badge"><span class="dot"></span> Caso não redirecione, <a class="card-link" href="./home.html">clique aqui</a>.</span></div>
       </header>
-      <hr class="soft" />
-      <div class="content">
-        <p class="muted">Uma aventura leve em um mundo onde algoritmos e encantamentos coexistem. Navegue pelas páginas como um grimório digital — setas do teclado funcionam!</p>
-        <div class="toc-grid" id="toc"></div>
-      </div>
-      <hr class="soft" />
-      <nav class="nav">
-        <span></span>
-        <a class="btn toc" href="#toc">Explorar capítulos</a>
-        <a class="btn next" data-nav href="./pages/page-1.html">Começar leitura →</a>
-      </nav>
-      <div class="footer-note">Dica: use as setas ← → para mudar de página.</div>
     </section>
   </main>
-  <script>
-    // Gera sumário com 30 páginas
-    const toc = document.getElementById('toc');
-    const temas = [
-      'Prólogo: Sussurros de Silício', 'A Cidade-Labirinto de Aethergrid', 'Dados do Destino', 'O Mago da Camada de Aplicação', 'Runas e Rotas', 'NPCs de Carbono', 'A Guilda dos Debuggers', 'Contrato Arcano-API', 'O Cubo de Von Neumann', 'Barda Quântica', 'Paradoxo do Inventário', 'Ferrugem nas Estrelas', 'A Torre dos Sandboxes', 'O Pacto dos Processos', 'Boss: O Kernel Ancestral', 'Patch Day', 'O Mercado de Artefatos Open-Source', 'Espadas de Fótons', 'Poções de Autoreplicação', 'O Selo de Segurança', 'Minotauro de Microserviços', 'O Trem Neuronal', 'Armadilhas de UI/UX', 'As Três Leis da Magitec', 'Câmara de Compilação', 'Rituais e Pull Requests', 'O Oráculo de Latência', 'RAID dos Reinos', 'Última Sessão de Jogo', 'Epílogo: O Código e o Círculo'
-    ];
-    const desc = 'Tecnologia, RPG, magia e nanotecnologia em capítulos curtos.';
-    for (let i=1;i<=30;i++) {
-      const a = document.createElement('a');
-      a.className = 'card-link';
-      a.href = `./pages/page-${i}.html`;
-      a.setAttribute('data-nav','');
-      a.innerHTML = `<div class="toc-item"><h3>${i}. ${temas[i-1] || 'Capítulo'}</h3><p>${desc}</p></div>`;
-      toc.appendChild(a);
-    }
-  </script>
-  <script src="./assets/js/main.js"></script>
 </body>
 </html>
